@@ -2,13 +2,17 @@
 <meta charset="utf-8">
 <title>Final? c62ac0cacd7302b9@765</title>
 <link rel="stylesheet" type="text/css" href="./inspector.css">
+<style>
+     .observablehq--inspect{ display: none }
+</style>
 <body>
-<script type="module">
+    
+    <script type="module">
 
-import define from "./index.js";
-import {Runtime, Library, Inspector} from "./runtime.js";
+        import define from "./index.js";
+        import { Runtime, Library, Inspector } from "./runtime.js";
 
-const runtime = new Runtime();
-const main = runtime.module(define, Inspector.into(document.body));
+        const runtime = new Runtime();
+        const main = runtime.module(define, Inspector.into(document.body));
 
-</script>
+    </script>
