@@ -1,0 +1,14 @@
+{
+  "name": "@ramirocampos/juntando-tudo-final",
+  "main": "9a7c225c7e31e18b@366.js",
+  "version": "366.0.0",
+  "homepage": "https://observablehq.com/@ramirocampos/juntando-tudo-final",
+  "author": {
+    "name": "ramirocampos",
+    "url": "https://observablehq.com/@ramirocampos"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
