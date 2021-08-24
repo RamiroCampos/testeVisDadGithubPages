@@ -2,11 +2,29 @@
 <meta charset="utf-8">
 <title>Final? c62ac0cacd7302b9@765</title>
 <link rel="stylesheet" type="text/css" href="./inspector.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@4/dist/style/dc.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
 <style>
-     .observablehq--inspect{ display: none }
+    .observablehq--inspect {
+        display: none
+    }
+
+    #mapid {
+        width: 650px;
+        height: 480px;
+    }
+
+    .center {
+        text-align: center;
+    }
 </style>
+
 <body>
-    
+
     <script type="module">
 
         import define from "./index.js";

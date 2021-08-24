@@ -169,7 +169,7 @@ function mapping([x,y]) {
 function container() {
   return `
 <main role="main" class="container">
-    <div class="row">
+    <div class="row center">
       <h3> Análise dos Preços</h3>
     </div>
 
@@ -179,7 +179,7 @@ function container() {
         </div>
         <div class = "col-6">
           <div id='boxplot'>
-            <h5>Variação dos Preços</h5>
+            <h5 class = 'center'>Variação dos Preços</h5>
           </div>
 
         </div>
@@ -198,7 +198,7 @@ function container() {
     </div>
     <div class = "row" >              
       <div id='graf2' >
-      <h5> Gráfico 2 de Lucro </h5>
+      <h5> Lucro entre cidades </h5>
       </div>
     </div>
 
@@ -206,24 +206,24 @@ function container() {
  `;
 }
 )});
-  main.variable(observer()).define(["html"], function(html){return(
-html`<code>css</code> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@4/dist/style/dc.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
+//   main.variable(observer()).define(["html"], function(html){return(
+// html`<code>css</code> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+// <link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@4/dist/style/dc.css" />
+// <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+//    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+//    crossorigin=""/>
 
-<style>
-  #mapid {
-    width: 650px;
-    height: 480px;
-  }
+// <style>
+//   #mapid {
+//     width: 650px;
+//     height: 480px;
+//   }
 
-.center {
-  text-align: center;
-}
-</style>`
-)});
+// .center {
+//   text-align: center;
+// }
+// </style>`
+// )});
   main.variable(observer()).define(["html"], function(html){return(
 html`<link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@4/dist/style/dc.css" />`
 )});
@@ -338,9 +338,6 @@ cityDim.group().reduce( function(p,v) {
           return [];
         }
       )
-)});
-  main.variable(observer()).define(["md"], function(md){return(
-md`#### Funções do Lucro`
 )});
   main.variable(observer("calcReturn")).define("calcReturn", function(){return(
 function calcReturn(n,p){
