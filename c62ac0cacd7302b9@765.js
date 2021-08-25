@@ -1,21 +1,30 @@
 // https://observablehq.com/@alexeias/juntando-tudo-final@765
 export default function define(runtime, observer) {
   const main = runtime.module();
-  main.variable(observer()).define(["md"], function(md){return(
-md`#### Análise de Preços e Lucros para materiais de refino do jogo Albion Online
-##### Materias analisados: Couro(leather) e Pelego(hide), tier 5-7`
-)});
+//   main.variable(observer()).define(["md"], function(md){return(
+// md`#### Análise de Preços e Lucros para materiais de refino do jogo Albion Online
+// ##### Materias analisados: Couro(leather) e Pelego(hide), tier 5-7`
+// )});
+  // <h4 class = 'center'>
+  //   Análise de Preços e Lucros para materiais de refino do jogo Albion Online  
+  // </h4>
+  // <h5 class = 'center' >
+  //   Materias analisados: Couro(leather) e Pelego(hide), tier 5-7
+  // </h5>
   main.variable(observer("viewof typeMaterial")).define("viewof typeMaterial", ["html"], function(html){return(
-html`<select>
-<option value=T5_LEATHER>T5_LEATHER
-<option value=T5_HIDE>T5_HIDE
+html`
+  
+  <select class = 'center'>
+    <option value=T5_LEATHER>T5_LEATHER
+    <option value=T5_HIDE>T5_HIDE
 
-<option value=T6_LEATHER>T6_LEATHER
-<option value=T6_HIDE>T6_HIDE
+    <option value=T6_LEATHER>T6_LEATHER
+    <option value=T6_HIDE>T6_HIDE
 
-<option value=T7_LEATHER>T7_LEATHER
-<option value=T7_HIDE>T7_HIDE
-</select>`
+    <option value=T7_LEATHER>T7_LEATHER
+    <option value=T7_HIDE>T7_HIDE
+  </select>
+`
 )});
   main.variable(observer("typeMaterial")).define("typeMaterial", ["Generators", "viewof typeMaterial"], (G, _) => G.input(_));
   main.variable(observer("buildvis")).define("buildvis", ["md","container","dc","cityDim","boxplotGroup","colorScale","dateDim","xScale","width","avgPrice","maxPrice2","cityScale"], function(md,container,dc,cityDim,boxplotGroup,colorScale,dateDim,xScale,width,avgPrice,maxPrice2,cityScale)
@@ -50,7 +59,7 @@ html`<select>
     .legend(
       dc
         .legend()
-        .x(width - 400)
+        .x(900 - 150)
         .y(300)
         .itemHeight(13)
         .gap(5)
@@ -98,7 +107,7 @@ html`<select>
     .group(maxPrice2)
     .colors(colorScale)
     .colorAccessor((d) => d.key)
-    .legend(dc.legend().highlightSelected(true));
+    .legend(dc.legend().x(900 - 500).y(20).highlightSelected(true));
   
   dc.renderAll();
   // updateMarkers();
@@ -136,12 +145,18 @@ new Object({
   Bridgewatch: [687, 886]
 })
 )});
-  main.variable(observer("mapping")).define("mapping", function(){return(
-function mapping([x,y]) {
-  // recebe (x,y) do paint, e retorna (y,x) do mapa do leaflet
-  return [ Math.round( (1080 - y)*(800/1080) ), Math.round( x*(1200/1440) ) ]  
+  main.variable(observer("run")).define("run", function(){return(
+function run() {
+  var e = document.getElementById("selectMenu");
+  typeMaterial = e.value;
 }
 )});
+main.variable(observer("mapping")).define("mapping", function(){return(
+  function mapping([x,y]) {
+    // recebe (x,y) do paint, e retorna (y,x) do mapa do leaflet
+    return [ Math.round( (1080 - y)*(800/1080) ), Math.round( x*(1200/1440) ) ]  
+  }
+  )});
   main.variable(observer("teste2")).define("teste2", ["maxPrice","mapping","paint"], function(maxPrice,mapping,paint){return(
 [
   [maxPrice.all()[0].key, mapping(paint[maxPrice.all()[0].key]) , maxPrice.all()[0].value ],
@@ -169,8 +184,28 @@ function mapping([x,y]) {
 function container() {
   return `
 <main role="main" class="container">
-    <div class="row center">
-      <h3> Análise dos Preços</h3>
+    <div>
+      <h4 class = 'center'>
+        Análise de Preços e Lucros lalala para materiais de refino do jogo Albion Online  
+      </h4>
+      <h5 class = 'center' >
+        Materias analisados: Couro(leather) e Pelego(hide), tier 5-7
+      </h5>
+    </div>
+    <div >
+      <h3 class="center"> Análise dos Preços </h3>
+
+      <select id = 'selectMenu' class = 'center' onchange="run()">
+        <option value=T5_LEATHER>T5_LEATHER
+        <option value=T5_HIDE>T5_HIDE
+    
+        <option value=T6_LEATHER>T6_LEATHER
+        <option value=T6_HIDE>T6_HIDE
+    
+        <option value=T7_LEATHER>T7_LEATHER
+        <option value=T7_HIDE>T7_HIDE
+       </select>
+
     </div>
 
 
@@ -185,20 +220,20 @@ function container() {
         </div>
     </div>
 
-    <div class = "row" >              
+    <div  >              
       <div id='time-chart' >
-      <h5> Preços ao longo de 1 mês </h5>
+      <h5 class = "center"> Preços ao longo de 1 mês </h5>
       </div>
     </div>
 
-    <div class = "row" >              
+    <div  >              
       <div id='graf1' >
-      <h5> Lucro por pack(999 unidades) - retorno de 36,7%(sem foco) </h5>
+      <h5 class = "center"> Lucro por pack(999 unidades) - retorno de 36,7%(sem foco) </h5>
       </div>
     </div>
-    <div class = "row" >              
+    <div  >              
       <div id='graf2' >
-      <h5> Lucro entre cidades </h5>
+      <h5 class = "center"> Lucro entre cidades </h5>
       </div>
     </div>
 
